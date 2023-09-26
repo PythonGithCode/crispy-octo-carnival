@@ -27,19 +27,6 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         self.data += data
 
-## functions 
-
-# simple time function for if you want to log time with event, (ignoring logging)
-def logWith(*args):
-    return str(( ", ".join(list(args)) ) + "  @ " + time.ctime())
-
-# instead of returning text it will print it
-def logWithOut(*args):
-    print(( ", ".join(list(args)) ) + "  @ " + time.ctime())
-
-
-
-
 ## code that runs
 
 # log when this starts
@@ -125,9 +112,9 @@ class MainApplication(tk.Frame):
         # keep this at the bottem to stop any errors
         try:
             self.load_settings()
-            print("Loaded settings")
+            logging.info("Loaded settings")
         except:
-            print("Failed to load settings")
+            logging.error("Failed to load settings")
 
     def notesWindow(self):
         pass
@@ -178,13 +165,13 @@ class MainApplication(tk.Frame):
         try:
             os.mkdir(director)
         except:
-            print("Can't make dir")
+            logging.error("Can't make dir")
         
         try:
             with open(director+"settings.toml") as f:
                 f.write()
         except:
-            print("Can't write to settings")
+            logging.error("Can't write to settings")
         
     def open_popup(self, popup_name):
         # create the pop-up window
@@ -274,16 +261,16 @@ class MainApplication(tk.Frame):
         
         try:
             self.load_settings()
-            print("reloaded settings")
+            logging.info("reloaded settings")
         except:
-            print("Failed to reload settings")
+            logging.error("Failed to reload settings")
 
     def save_file(self):
         # open a file dialog box for saving a file
         file_path = filedialog.asksaveasfilename(initialdir=director, initialfile="settings.toml")
 
         # do something with the file path
-        print("Saving file to:", file_path)
+        logging.info("Saving file to:", file_path)
 
     # create a button that opens a file dialog box for saving a file
     
@@ -293,3 +280,6 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = MainApplication(master=root)
     app.mainloop()
+
+
+logging.info("ENDED")
