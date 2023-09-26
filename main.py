@@ -270,7 +270,7 @@ class MainApplication(tk.Frame):
         file_path = filedialog.asksaveasfilename(initialdir=director, initialfile="settings.toml")
 
         # do something with the file path
-        logging.info("Saving file to:", file_path)
+        logging.info("Saving file to: ", file_path)
 
     # create a button that opens a file dialog box for saving a file
     
