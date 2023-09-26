@@ -42,7 +42,8 @@ def logWithOut(*args):
 
 ## code that runs
 
-print(logWith("Running"))
+# log when this starts
+logging.info("Starting")
 
 # keyboard.add_hotkey('ctrl+shift+a', logWithOut, args=("Test", "food"))
 
