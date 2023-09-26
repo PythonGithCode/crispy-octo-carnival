@@ -123,11 +123,14 @@ class MainApplication(tk.Frame):
         pass
 
     def openWeb(self, site="https://www.google.com/"):
-        self.web_app = QApplication([])
-        self.web_webview = QWebEngineView()
-        self.web_webview.load(QUrl(site))
-        self.web_webview.show()
-        self.web_app.exec_()
+        try:
+            self.web_app = QApplication([])
+            self.web_webview = QWebEngineView()
+            self.web_webview.load(QUrl(site))
+            self.web_webview.show()
+            self.web_app.exec_()
+        except:
+            loggging.error("Failed to load web page")
     
     def openW3b(self):
         frame = HtmlFrame(self.master) #create HTML browser
