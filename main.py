@@ -64,6 +64,7 @@ class MainApplication(tk.Frame):
         advanced_menu = tk.Menu(settings_menu)
         settings_menu.add_cascade(label="Advanced settings", menu=advanced_menu)
 
+
         # add a "Is Amazing" checkbox to the advanced settings menu
         self.is_amazing_var = tk.BooleanVar()
         self.is_amazing_var.set(False)
@@ -115,6 +116,7 @@ class MainApplication(tk.Frame):
             logging.info("Loaded settings")
         except:
             logging.error("Failed to load settings")
+        self.web_app = QApplication([])
 
     def notesWindow(self):
         pass
@@ -124,7 +126,6 @@ class MainApplication(tk.Frame):
 
     def openWeb(self, site="https://www.google.com/"):
         try:
-            self.web_app = QApplication([])
             self.web_webview = QWebEngineView()
             self.web_webview.load(QUrl(site))
             self.web_webview.show()
