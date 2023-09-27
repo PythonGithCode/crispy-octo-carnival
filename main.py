@@ -270,14 +270,16 @@ class MainApplication(tk.Frame):
             logging.error("Failed to reload settings")
 
     def save_file(self):
-        try:
-            # open a file dialog box for saving a file
-            file_path = filedialog.asksaveasfilename(initialdir=director, initialfile="settings.toml")
+        logging.info("File dialog")
 
-            # do something with the file path
-            logging.info("Saving file to: ", file_path)
-        except Exception as e:
-            logging.error("Saving to file FAILED, error: ", e)
+            # open a file dialog box for saving a file
+        try:
+            file_path = filedialog.asksaveasfilename(initialdir=director, initialfile="settings.toml")
+        except:
+            logging.error("Saving to file FAILED, error: ")
+
+        # do something with the file path
+        logging.info("Saving file to: ", file_path)
 
     # create a button that opens a file dialog box for saving a file
     
