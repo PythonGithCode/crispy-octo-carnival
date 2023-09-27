@@ -166,6 +166,7 @@ class MainApplication(tk.Frame):
         window.focus_force()
 
     def makeAppDataStuff(self):
+        logging.debug("Running 'makeAppDataStuff' function")
         try:
             os.mkdir(director)
         except:
@@ -178,6 +179,7 @@ class MainApplication(tk.Frame):
             logging.error("Can't write to settings")
         
     def open_popup(self, popup_name):
+        logging.debug("Running 'open_popup' function")
         # create the pop-up window
         popup = tk.Toplevel(self.master)
         popup.title(popup_name)
@@ -187,6 +189,7 @@ class MainApplication(tk.Frame):
         popup_label.pack()
 
     def open_all_settings(self):
+        logging.debug("Running 'open_all_settings' function")
         # create the "All settings" window
         self.settings_window = tk.Toplevel(self.master)
         self.settings_window.title("All Settings")
@@ -242,6 +245,7 @@ class MainApplication(tk.Frame):
         self.settings_window.wm_attributes("-topmost", int(self.settings["topmost"])*29)
     
     def save_settings(self, update=False):
+        logging.debug("Running save_settings function")
         # apply the new settings
         is_amazing = self.is_amazing_var.get()
         radio = self.radio_var.get()
@@ -270,23 +274,23 @@ class MainApplication(tk.Frame):
             logging.error("Failed to reload settings")
 
     def save_file(self):
-        logging.info("File dialog")
+        logging.debug("File dialog")
 
-            # open a file dialog box for saving a file
+        # open a file dialog box for saving a file
+        file_path = filedialog.asksaveasfilename(initialdir=director, initialfile="settings.toml")
         try:
-            file_path = filedialog.asksaveasfilename(initialdir=director, initialfile="settings.toml")
-        except:
-            logging.error("Saving to file FAILED, error: ")
+            logging.info("Saving file to: " + file_path)
+        except Eception as e:
+            logging.error("Saving to file FAILED, error: " + e)
 
         # do something with the file path
-        logging.info("Saving file to: ", file_path)
 
     # create a button that opens a file dialog box for saving a file
     
 
 
 if __name__ == "__main__":
-    logging.info("Version 0.0.1 (1)")
+    logging.info("Version 0.0.3 - 23.9.27 (3)")
     root = tk.Tk()
     app = MainApplication(master=root)
     app.mainloop()
