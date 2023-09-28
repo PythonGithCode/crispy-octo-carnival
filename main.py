@@ -17,6 +17,7 @@ from html.parser import HTMLParser
 import logging
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
+logging.debug("Level Atleast Debug")
 
 
 class MyHTMLParser(HTMLParser):
@@ -306,7 +307,7 @@ class MainApplication(tk.Frame):
 
 
 if __name__ == "__main__":
-    logging.info("Version 0.0.4 - 23.9.28 (4)")
+    logging.info("Version 0.0.5 - 23.9.28 (5)")
     root = tk.Tk()
     app = MainApplication(master=root)
     app.mainloop()
