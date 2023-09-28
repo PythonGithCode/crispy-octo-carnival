@@ -161,10 +161,11 @@ class MainApplication(tk.Frame):
 
         # keep this at the bottem to stop any errors
         try:
-            self.load_settings()
             logging.info("Loaded settings")
+            self.load_settings()
         except:
             logging.error("Failed to load settings")
+        logging.debug("Makeing QApplication")
         self.web_app = QApplication([])
 
     def notesWindow(self):
