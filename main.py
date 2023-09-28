@@ -65,54 +65,91 @@ class MainApplication(tk.Frame):
         # create a "Settings" dropdown menu
         logging.debug("Creating a settings dropdown menu")
         settings_menu = tk.Menu(menu)
+
         logging.debug("Adding the settings lable to the 'settings_menu'")
         menu.add_cascade(label="Settings", menu=settings_menu)
 
         # add a "Advanced settings" submenu to the settings menu
-        logging.debug("")
+        logging.debug("Making 'advanced_menu'")
         advanced_menu = tk.Menu(settings_menu)
-        logging.debug("")
+
+        logging.debug("Setting 'advanced_menu' as a submenu to 'settings_menu'")
         settings_menu.add_cascade(label="Advanced settings", menu=advanced_menu)
 
 
         # add a "Is Amazing" checkbox to the advanced settings menu
+        logging.debug("Makeing a booleanVar 'is_amazing_var'")
         self.is_amazing_var = tk.BooleanVar()
+
+        logging.debug("Setting 'is_amazing_var' to False")
         self.is_amazing_var.set(False)
+
+        logging.debug("Adding 'is_amazing_var' to 'advanced_menu' as a checkbutton with command 'self.save_settings' lable 'Is Amazing'")
         advanced_menu.add_checkbutton(label="Is Amazing", variable=self.is_amazing_var, command=self.save_settings)
 
-        # add a "Is Amazing" checkbox to the advanced settings menu
+        # add a "is top var" checkbox to the advanced settings menu
+        logging.debug("Makeing 'is_top_var' as BooleanVar")
         self.is_top_var = tk.BooleanVar()
+
+        logging.debug("Setting 'is_top_var' as False")
         self.is_top_var.set(False)
+
+        logging.debug("Adding 'is_top_var' to 'advanced_menu' as a checkbox, lable 'Is Top', command 'self.save_settings'")
         advanced_menu.add_checkbutton(label="Is Top", variable=self.is_top_var, command=self.save_settings)
 
 
         # add a radio button group to the advanced settings menu
+        logging.debug("Makeing a button group radio that is a string var")
         self.radio_var = tk.StringVar()
+
+        logging.debug("Setting 'radio_var' default to 'foo'")
         self.radio_var.set("foo")
+
+        logging.debug("Adding radio button to 'advanced_menu', called \"Print 'foo'\" with value being 'foo' running command 'self.save_settings'")
         advanced_menu.add_radiobutton(label="Print 'foo'", variable=self.radio_var, value="foo", command=self.save_settings)
+
+        logging.debug("Adding radio button to 'advanced_menu', called \"Set text size to 24px\" with value being 'size' running command 'self.save_settings'")
         advanced_menu.add_radiobutton(label="Set text size to 24px", variable=self.radio_var, value="size", command=self.save_settings)
+
+        logging.debug("Adding radio button to 'advanced_menu', called \"Do nothing\" with value being 'nothing' running command 'self.save_settings'")
         advanced_menu.add_radiobutton(label="Do nothing", variable=self.radio_var, value="nothing", command=self.save_settings)
 
         # keyboard.add_hotkey('ctrl+shift+c', self.openW3b, args=())
 
         # add an "All settings" item to the settings menu
+        logging.debug("Adding command to 'settings_menu', labled 'All settings window', with command 'self.open_all_settings'")
         settings_menu.add_command(label="All settings window", command=self.open_all_settings)
 
 
+        logging.debug("Creating 'makeFileData_button' as a button")
         self.makeFileData_button = tk.Button(self.master, text="Make app data", command=self.makeAppDataStuff)
+
+        logging.debug("packing 'makeFileData_button'")
         self.makeFileData_button.pack()
 
         
         
         # create a "Settings" dropdown menu
+        logging.debug("Creating 'project_menu' menu")
         self.project_menu = tk.Menu(menu)
+        
+        logging.debug("")
         menu.add_cascade(label="Project Menu", menu=self.project_menu)
         
         self.project_menu.add_command(label="Termoil", command=self.open_terminal)
+        
+        logging.debug("")
         self.project_menu.add_command(label="WebPage", command=self.openWeb)
+        
+        logging.debug("")
         self.project_menu.add_command(label="Wordle",  command=lambda: self.openWeb("https://wordleespanol.org/"))
         
+
+        #  🔥  🗝  hotkeys 🔥 🗝 
+        logging.debug("")
         keyboard.add_hotkey('ctrl+shift+a', self.openWeb)
+        
+        logging.debug("")
         keyboard.add_hotkey('ctrl+shift+b', self.raise_window, args=(self.master))
 
 
@@ -307,7 +344,7 @@ class MainApplication(tk.Frame):
 
 
 if __name__ == "__main__":
-    logging.info("Version 0.0.5 - 23.9.28 (5)")
+    logging.info("Version 0.0.6 - 23.9.28 (6)")
     root = tk.Tk()
     app = MainApplication(master=root)
     app.mainloop()
