@@ -347,7 +347,7 @@ class MainApplication(tk.Frame):
 
 
 if __name__ == "__main__":
-    logging.info("Version 0.0.6 - 23.9.28 (6)")
+    logging.info("Version 0.1.0 - 23.9.28 (7)")
     root = tk.Tk()
     app = MainApplication(master=root)
     app.mainloop()
