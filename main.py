@@ -46,22 +46,31 @@ class MainApplication(tk.Frame):
         self.master.geometry("400x300")
 
         # create a drop-down menu
+        logging.debug("Creating a drop-down menu")
         menu = tk.Menu(self.master)
         self.master.config(menu=menu)
 
         # create a "File" dropdown menu
+        logging.debug("Creating a \"File\" dropdown menu")
         file_menu = tk.Menu(menu)
+        
+        logging.debug("Adding cascade to 'file_menu'")
         menu.add_cascade(label="File", menu=file_menu)
-
+        
+        logging.debug(f"Adding a command to the 'file_menu' command 'self.save_file'")
         file_menu.add_command(label="Save settings location", command=self.save_file)
 
 
         # create a "Settings" dropdown menu
+        logging.debug("Creating a settings dropdown menu")
         settings_menu = tk.Menu(menu)
+        logging.debug("Adding the settings lable to the 'settings_menu'")
         menu.add_cascade(label="Settings", menu=settings_menu)
 
         # add a "Advanced settings" submenu to the settings menu
+        logging.debug("")
         advanced_menu = tk.Menu(settings_menu)
+        logging.debug("")
         settings_menu.add_cascade(label="Advanced settings", menu=advanced_menu)
 
 
@@ -119,12 +128,15 @@ class MainApplication(tk.Frame):
         self.web_app = QApplication([])
 
     def notesWindow(self):
+        logging.debug("Running 'openW3b' function")
         pass
 
     def mocroRecoder(self, deration):
+        logging.debug("Running 'openW3b' function")
         pass
 
     def openWeb(self, site="https://www.google.com/"):
+        logging.debug("Running 'openWeb' function")
         try:
             self.web_webview = QWebEngineView()
             self.web_webview.load(QUrl(site))
@@ -134,6 +146,7 @@ class MainApplication(tk.Frame):
             loggging.error("Failed to load web page")
     
     def openW3b(self):
+        logging.debug("Running 'openW3b' function")
         frame = HtmlFrame(self.master) #create HTML browser
         frame.load_website("https://www.google.com/") #load a website
         frame.pack(fill="both", expand=True) #attach the HtmlFrame widget to the parent windowframe = HtmlFrame(root) #create HTML browser
@@ -142,6 +155,7 @@ class MainApplication(tk.Frame):
 
     # define a function to open a window with a terminal
     def open_terminal(self, n=None):
+        logging.debug("Running 'open_terminal' function")
         with open(os.getcwd() + '\\terminalFile.txt', 'w') as f:
             f.write(' ')
         os.startfile(os.getcwd() + '\\terminalFile.txt')
@@ -149,6 +163,7 @@ class MainApplication(tk.Frame):
 
     # define a function to load settings from a TOML file
     def load_settings(self):
+        logging.debug("Running 'load_settings' function")
         # read the TOML file
         with open(director + "settings.toml", "r") as f:
             self.settings = toml.load(f)
@@ -161,6 +176,7 @@ class MainApplication(tk.Frame):
     
 
     def raise_window(self, window):
+        logging.debug("Running 'raise_window' function")
         window.attributes('-topmost', True)
         window.attributes('-topmost', False)
         window.focus_force()
