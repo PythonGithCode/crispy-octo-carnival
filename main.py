@@ -133,27 +133,29 @@ class MainApplication(tk.Frame):
         logging.debug("Creating 'project_menu' menu")
         self.project_menu = tk.Menu(menu)
         
-        logging.debug("")
+        logging.debug("Add 'project_menu' to menu")
         menu.add_cascade(label="Project Menu", menu=self.project_menu)
         
+        logging.debug("Add command 'Termoil' to 'project_menu'")
         self.project_menu.add_command(label="Termoil", command=self.open_terminal)
         
-        logging.debug("")
+        logging.debug("Add command 'WebPage' to 'project_menu'")
         self.project_menu.add_command(label="WebPage", command=self.openWeb)
         
-        logging.debug("")
+        logging.debug("Add command 'Wordle' to 'project_menu'")
         self.project_menu.add_command(label="Wordle",  command=lambda: self.openWeb("https://wordleespanol.org/"))
         
 
         #  🔥  🗝  hotkeys 🔥 🗝 
-        logging.debug("")
+        logging.debug("Adding hotkey: 'ctrl+shift+a', with function 'self.openWeb'")
         keyboard.add_hotkey('ctrl+shift+a', self.openWeb)
         
-        logging.debug("")
+        logging.debug("Adding hotkey: 'ctrl+shift+b', with function 'self.raise_window' and args '(self.master)'")
         keyboard.add_hotkey('ctrl+shift+b', self.raise_window, args=(self.master))
 
 
         # makeing notes
+        logging.debug("Adding command to 'project_menu' Notes")
         self.project_menu.add_command(label="Notes", command=self.notesWindow)
 
 
